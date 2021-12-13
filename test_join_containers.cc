@@ -1,7 +1,10 @@
 #include <string>
 #include <iostream>
+#include <iterator>
+#include <vector>
 
 int main()
 {
-    std::cout << "testing testing" << std::endl;
+    std::vector<int> a{1, 2, 3};
+    std::cout << 
 }
