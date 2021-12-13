@@ -3,17 +3,16 @@
 
 
 // T is an iterator type
-template <typename T> class join_iterator {
+template <typename T> 
+class join_iterator {
     public:
-        typedef T iter_type;
-        typedef iter_type c1_begin;
-       
-        // eller ska man bara ta in två collections istället
-        // då kan man ju få tag på iteratorerna i denna klassen
-        join_iterator(iter_type& c1_begin, iter_type& c2_begin);
-        join_iterator()
+       using value_type = typename T::value_type;
+       using iterator_category = std::input_iterator_tag;
+       using difference_type = T::difference_type;
+       using pointer = value_type*;
+       using reference = value_type&;
 
-    private:
+   
 }
 
 #endif
