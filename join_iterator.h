@@ -12,6 +12,8 @@ class join_iterator {
        using pointer = value_type*;
        using reference = value_type&;
 
+       join_iterator<value_type>();
+
    
 }
 
