@@ -1,1 +1,0 @@
-test_join_containers: test_join_containers.cc

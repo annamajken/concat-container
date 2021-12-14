@@ -21,18 +21,16 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = test_string_cast
+PROGS = test_join_iterator
 
 all: $(PROGS)
 
-test: test_join_containers
-	./test_join_containers
+test: test_join_iterator
+	./test_join_iterator
 
 
 # Targets rely on implicit rules for compiling and linking
-test_string_cast: test_string_cast.o date.o 
-test_string_cast.o: test_string_cast.cc 
-date.o: date.cc 
+test_join_iterator: test_join_iterator.o 
 
 
 # Phony targets
