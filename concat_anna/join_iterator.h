@@ -12,7 +12,7 @@ public:
     using pointer = value_type *;
     using reference = value_type &;
 
-    join_iterator(Iterator start, Iterator end) : begin(start), currEnd(end), _pos(&(*start)) {}
+    join_iterator(Iterator begin, Iterator end) : first(begin), last(end), _pos(begin) {}
 
 
     reference operator*()
@@ -23,12 +23,12 @@ public:
     Iterator& operator++()
     {
         _pos++;
-        return *this;
+        return _pos;
     }
 
 private:
 
-    Iterator begin;
-    Iterator currEnd;
-    pointer _pos;
+    Iterator first;
+    Iterator last;
+    Iterator _pos;
 };

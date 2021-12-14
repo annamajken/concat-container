@@ -13,6 +13,8 @@ int main()
     auto test = *it;
     ++it;
     test = *it;
+    ++it;
+    test = *it;
 
     
     
