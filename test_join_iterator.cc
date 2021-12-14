@@ -10,8 +10,9 @@ int main()
     std::vector<int> a{1, 2, 3};
     std::vector<int> b{2, 3, 4};
     using iter_type = decltype(a.begin());
+    auto next = b.begin();
     // jag vill ha en pekare till b.begin() - hur?
-    iter_type* vecPointer{b.begin()};
+    iter_type* vecPointer = &next;
     join_iterator<iter_type> j_iter(a.begin(), a.end(), vecPointer);
     std::string res = j_iter.testNext();
     std::cout << res << std::endl;
