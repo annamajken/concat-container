@@ -1,4 +1,5 @@
 #include <string>
+#include <utility>
 
 // T is an iterator type
 template <typename T> 
@@ -10,7 +11,7 @@ class join_iterator {
        using pointer = value_type*;
        using reference = value_type&;
 
-       join_iterator<value_type>(T begin, T end, T* nextCollection) : first(begin), last(end), next(nextCollection) {} ;
+       join_iterator<value_type>(T begin, T end, pointer& nextCollection) : first(begin), last(end), next(nextCollection) {} ;
        T* getNext() const {
            return next; 
        }
@@ -21,8 +22,10 @@ class join_iterator {
            }
            return s;
        }
+
+      
     private:
         T first;
         T last;
-        T* next = nullptr;
+        pointer& next = nullptr;
 };
