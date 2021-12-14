@@ -1,5 +1,4 @@
-#ifndef JOIN_ITERATOR_H
-#define JOIN_ITERATOR_H
+
 
 
 // T is an iterator type
@@ -12,9 +11,9 @@ class join_iterator {
        using pointer = value_type*;
        using reference = value_type&;
 
-       join_iterator<value_type>();
+       join_iterator<value_type>(T& begin, T& end, T* next);
+    private:
+        T* next = nullptr;
 
    
-}
-
-#endif
+};
