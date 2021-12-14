@@ -2,30 +2,39 @@
 #include <utility>
 
 // T is an iterator type
-template <typename T> 
+template <typename Iterator> 
 class join_iterator {
     public:
-       using value_type = typename T::value_type;
+       using value_type = typename Iterator::value_type;
        using iterator_category = std::input_iterator_tag;
-       using difference_type = typename T::difference_type;
+       using difference_type = typename Iterator::difference_type;
        using pointer = value_type*;
        using reference = value_type&;
 
-       join_iterator<value_type> (T begin, T end, T* nextCollection) : first(begin), last(end), next(nextCollection) {} 
-       T* getNext() const {
-           return next; 
-       }
-       std::string testNext() {
-           std::string s = "this collection is last";
-           if (next != nullptr) {
-               s = "there is another collection after this";
+       join_iterator(Iterator start, Iterator end, Iterator nextCollection, Iterator nextEnd) : begin(start), currPtr(&(*start)), currentEnd(end), next(nextCollection), 
+       finalEnd(nextEnd) {} 
+       join_iterator(Iterator end) : currPtr(&(*end)), currentEnd(end), finalEnd(end) {}
+       
+       Iterator& operator++() 
+       { 
+           if (currPtr + 1 == currentEnd) {
+               currPtr = &(*next);
+               currentEnd = finalEnd;
            }
-           return s;
+           currPtr++;
+           return *this;
        }
 
-      
+       bool operator==(const Iterator other) 
+       {
+           return this -> currPtr == other.currPtr;
+       }
+
     private:
-        T first;
-        T last;
-        T* next = nullptr;
+        Iterator begin;
+        pointer currPtr;
+        Iterator currentEnd;
+        Iterator next;
+        Iterator finalEnd;
+        
 };
