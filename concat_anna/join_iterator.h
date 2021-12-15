@@ -14,6 +14,8 @@ public:
 
     join_iterator(Iterator begin, Iterator end) : first(begin), last(end), _pos(begin) {}
 
+    join_iterator(Iterator end) : _pos(end) {}
+
 
     reference operator*()
     {
@@ -22,7 +24,10 @@ public:
 
     Iterator& operator++()
     {
-        _pos++;
+        if(_pos + 1 == last) _pos = next;
+
+        else _pos++;
+
         return _pos;
     }
 
@@ -48,5 +53,6 @@ public:
 private:
     Iterator first;
     Iterator last;
+    Iterator next;
     Iterator _pos;
 };
