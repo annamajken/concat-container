@@ -26,6 +26,13 @@ public:
         return _pos;
     }
 
+    Iterator operator++(int)
+    {
+        Iterator res = _pos;
+        _pos++;
+        return res;
+    }
+
 private:
 
     Iterator first;

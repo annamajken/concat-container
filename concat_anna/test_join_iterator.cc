@@ -15,6 +15,8 @@ int main()
     test = *it;
     ++it;
     test = *it;
+    it++;
+    test = *it;
 
     
     
