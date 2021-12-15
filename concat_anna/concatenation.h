@@ -7,20 +7,17 @@ class concatenation{
         
 
         iter begin() {
-            return it_begin;
+            return iter{collection1.begin(), collection1.end(), collection2.begin()};
         }
         iter end() {
-            return it_end;
+            return iter{collection2.end()};
         }
 
         void push_back(const value_type& newItem) {
-            collection1.push_back(newItem);
+            collection2.push_back(newItem);
         }
 
     private:
         T& collection1;
         T& collection2;
-        iter it_begin{collection1.begin(), collection1.end(), collection2.begin()};
-        iter it_end{collection2.end()};
-
 };

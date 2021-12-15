@@ -89,6 +89,7 @@ void testConcatenation() {
      
     vector<std::string> a{"hej", "på", "dig"};
     vector<std::string> b{"din", "fule", "faan"};
+
     using collectionType = decltype(a);
     concatenation<collectionType> conCat(a, b);
     for (auto& item : conCat) {
@@ -110,9 +111,7 @@ void testConcatCopy() {
     for (std::string& s : res) {
         cout << s << " ";
     }
-    cout << endl;
-    cout << endl;
-
+    cout << endl; cout << endl;
 }
 
 void testConcatFind() {
@@ -121,27 +120,27 @@ void testConcatFind() {
     vector<int> b{6, 7, 9};
     using collectionType = decltype(a);
     concatenation<collectionType> conCat(a, b);
-    auto pos = std::find(conCat.begin(), conCat.end(), 4);
-    if (pos != conCat.end()) {
-        cout << "it was found!";
+    auto pos1 = std::find(conCat.begin(), conCat.end(), 3);
+    auto pos2 = std::find(conCat.begin(), conCat.end(), 4);
+    if (pos1 != conCat.end() || pos2 == conCat.end()) {
+        cout << "PASSED";
     } else {
-        cout<<"it was not found!";
+        cout<< "FAILED";
     }
     cout << endl;
     cout << endl;
 }
 
 void testConcatWrite() {
-    cout << "-------- Testing write to concatenation --------" << endl;
+    cout << "-------- Testing push_back--------" << endl;
     vector<std::string> a{"hej", "på", "dig"};
-    vector<std::string> b{"din", "fule", "faan"};
+    vector<std::string> b{"din", "fule"};
     using collectionType = decltype(a);
-    concatenation<collectionType> conCat(a, b);
-    vector<std::string> c{};
-    vector<std::string> d{};
-    concatenation<collectionType> resultConcat(c, d);
-    std::copy(conCat.begin(), conCat.end(), std::back_inserter(resultConcat));
-    for (auto& s : resultConcat) {
+    concatenation<collectionType> c{a, b};
+
+    c.push_back("faan");
+    
+    for (auto& s : c) {
         cout << s << " ";
     }
     cout << endl;
