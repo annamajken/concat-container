@@ -21,7 +21,6 @@ void equalsOperators() {
     if(equals && notEquals) cout << "== and != PASSED" << endl;
     else cout << "== and != FAILED" << endl;
     cout << endl;
-    cout << endl;
 }
 
 void incrementOperators() { 
@@ -39,7 +38,6 @@ void incrementOperators() {
     
     if(test1 && test2) cout << "++it and it++ PASSED" << endl;
     else cout << "++it and it++ FAILED" << endl;
-    cout << endl;
     cout << endl;
 }
 

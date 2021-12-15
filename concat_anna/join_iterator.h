@@ -30,7 +30,6 @@ public:
         if(++_pos == firstEnd) 
             _pos = secondBegin;
 
-
         return _pos;
     }
 
