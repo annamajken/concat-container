@@ -5,6 +5,7 @@
 #include<algorithm>
 
 #include"join_iterator.h"
+#include"concatenation.h"
 
 using std::vector;
 using std::cout;
@@ -82,10 +83,25 @@ void copy() {
 
 }
 
+void testConcatenation() {
+     cout << "-------- Testing concatenation --------" << endl;
+     
+    vector<std::string> a{"hej", "på", "dig"};
+    vector<std::string> b{"din", "fule", "faan"};
+    using collectionType = decltype(a);
+    concatenation<collectionType> conCat(a, b);
+    for (auto& item : conCat) {
+        cout << item << " ";
+    }
+    cout << endl;
+
+}
+
 int main() {
    equalsOperators(); 
    incrementOperators();
    iterate();
    copy();
+   testConcatenation();
 
 }
