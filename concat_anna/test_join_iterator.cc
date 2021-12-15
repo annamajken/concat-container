@@ -12,8 +12,8 @@ void equalsOperators() {
     cout << "-------- Testing == and != --------" << endl;
     vector<int> a{1, 2, 3};
     using iter_type = decltype(a.begin());
-    join_iterator<iter_type> it1(a.begin(), a.end());
-    join_iterator<iter_type> it2(a.begin() + 1, a.end());
+    join_iterator<iter_type> it1(a.begin(), a.end(), a.end());
+    join_iterator<iter_type> it2(a.begin() + 1, a.end(), a.end());
    
     bool equals = !(it1 == it2);
     bool notEquals = (it1 != it2);
@@ -28,9 +28,9 @@ void incrementOperators() {
     cout << "-------- Testing ++it and it++ --------" << endl;
     vector<int> a{1, 2, 3};
     using iter_type = decltype(a.begin());
-    join_iterator<iter_type> it1(a.begin(), a.end());
-    join_iterator<iter_type> it2(a.begin(), a.end());
-    join_iterator<iter_type> it3(a.begin() + 1, a.end());
+    join_iterator<iter_type> it1(a.begin(), a.end(), a.end());
+    join_iterator<iter_type> it2(a.begin(), a.end(), a.end());
+    join_iterator<iter_type> it3(a.begin() + 1, a.end(), a.end());
     it1++;
     ++it2;
 
@@ -46,9 +46,16 @@ void incrementOperators() {
 void iterate() { 
     vector<int> a{1, 2, 3};
     vector<int> b{4, 5, 6};
+    using iterType = decltype(a.begin());
+
+    for(join_iterator<iterType> it{a.begin(), a.end(), b.begin()}; 
+        it != join_iterator<iterType>{b.end()}; it++) { 
+        cout << *it << endl;
+    }
 }
 
 int main() {
    equalsOperators(); 
    incrementOperators();
+   iterate();
 }

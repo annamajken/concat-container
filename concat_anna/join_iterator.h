@@ -12,55 +12,47 @@ public:
     using pointer = value_type *;
     using reference = value_type &;
 
-    join_iterator(Iterator begin, Iterator end) : first(begin), last(end), _pos(begin) {}
+    join_iterator(Iterator fb, Iterator fe, Iterator sb):
+        firstBegin(fb), 
+        firstEnd(fe), 
+        secondBegin(sb), 
+        _pos(fb) {}
 
-    join_iterator(Iterator end) : _pos(end) {}
+    join_iterator(Iterator se): 
+        _pos(se) {}
 
 
-    reference operator*()
-    {
+    reference operator*() {
         return *_pos;
     }
 
-    Iterator& operator++()
-    {
-        if(_pos + 1 == last) _pos = next;
+    Iterator& operator++() {
+        if(++_pos == firstEnd) 
+            _pos = secondBegin;
 
-        else _pos++;
 
         return _pos;
     }
 
-    Iterator operator++(int)
-    {
+    Iterator operator++(int) {
         Iterator res = _pos;
         _pos++;
         return res;
     }
 
     // returns true if iterators are pointing to the same element
-<<<<<<< HEAD
-    bool operator==(const join_iterator &other) const
-=======
-    bool operator==(const join_iterator other)
->>>>>>> 496463ad7ac6281dfd6011c71d592e9c74d5bdb0
-    {
+    bool operator==(const join_iterator &other) const {
         return _pos == other._pos;
     }
 
     // returns true if iterators are pointing to different elements
-<<<<<<< HEAD
-    bool operator!=(const join_iterator &other) const
-=======
-    bool operator!=(const join_iterator other)
->>>>>>> 496463ad7ac6281dfd6011c71d592e9c74d5bdb0
-    {
+    bool operator!=(const join_iterator &other) const {
         return !(_pos == other._pos);
     }
 
 private:
-    Iterator first;
-    Iterator last;
-    Iterator next;
+    Iterator firstBegin{};
+    Iterator firstEnd{};
+    Iterator secondBegin{};
     Iterator _pos;
 };
