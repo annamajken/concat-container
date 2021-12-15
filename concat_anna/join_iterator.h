@@ -1,7 +1,9 @@
 #include <string>
 #include <utility>
 
-// T is an iterator type
+using std::cout;
+using std::endl;
+
 template <typename Iterator>
 class join_iterator
 {
@@ -26,17 +28,18 @@ public:
         return *_pos;
     }
 
-    Iterator& operator++() {
-        if(++_pos == firstEnd) 
+    join_iterator& operator++() {
+        if(++_pos == firstEnd) {
             _pos = secondBegin;
+        }
 
-        return _pos;
+        return *this;
     }
 
-    Iterator operator++(int) {
-        Iterator res = _pos;
-        _pos++;
-        return res;
+    join_iterator operator++(int) {
+        join_iterator tmp = *this;
+        ++(*this);
+        return tmp;
     }
 
     // returns true if iterators are pointing to the same element

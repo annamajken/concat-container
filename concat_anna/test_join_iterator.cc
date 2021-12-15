@@ -48,8 +48,15 @@ void iterate() {
 
     for(join_iterator<iterType> it{a.begin(), a.end(), b.begin()}; 
         it != join_iterator<iterType>{b.end()}; it++) { 
-        cout << *it << endl;
+        cout << *it << " ";
     }
+    cout << endl;
+
+    for(join_iterator<iterType> it{a.begin(), a.end(), b.begin()}; 
+        it != join_iterator<iterType>{b.end()}; ++it) { 
+        cout << *it << " ";
+    }
+    cout << endl;
 }
 
 int main() {
