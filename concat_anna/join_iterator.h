@@ -39,13 +39,21 @@ public:
     }
 
     // returns true if iterators are pointing to the same element
+<<<<<<< HEAD
     bool operator==(const join_iterator &other) const
+=======
+    bool operator==(const join_iterator other)
+>>>>>>> 496463ad7ac6281dfd6011c71d592e9c74d5bdb0
     {
         return _pos == other._pos;
     }
 
     // returns true if iterators are pointing to different elements
+<<<<<<< HEAD
     bool operator!=(const join_iterator &other) const
+=======
+    bool operator!=(const join_iterator other)
+>>>>>>> 496463ad7ac6281dfd6011c71d592e9c74d5bdb0
     {
         return !(_pos == other._pos);
     }
