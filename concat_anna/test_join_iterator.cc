@@ -15,7 +15,7 @@ int main()
     if (it == it2) std::cout << "theyre equal." << std::endl;
     test = *it;
     ++it;
-    if (it != it2) std::cout << "theyre not equal." << std::endl;
+    //if (it != it2) std::cout << "theyre not equal." << std::endl;
     test = *it;
     it++;
     test = *it;
