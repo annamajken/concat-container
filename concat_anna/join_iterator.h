@@ -34,15 +34,15 @@ public:
     }
 
     // returns true if iterators are pointing to the same element
-    bool operator==(Iterator other)
+    bool operator==(const join_iterator other)
     {
-        return *_pos == *other;
+        return _pos == other._pos;
     }
 
     // returns true if iterators are pointing to different elements
-    bool operator!=(Iterator other)
+    bool operator!=(const join_iterator other)
     {
-        return !(*_pos == *other);
+        return !(_pos == other._pos);
     }
 
 private:
