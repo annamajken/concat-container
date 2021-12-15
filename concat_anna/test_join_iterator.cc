@@ -2,6 +2,8 @@
 #include<vector>
 #include<iostream>
 #include<utility>
+#include<algorithm>
+
 #include"join_iterator.h"
 
 using std::vector;
@@ -42,6 +44,8 @@ void incrementOperators() {
 }
 
 void iterate() { 
+    cout << "-------- Testing iteration --------" << endl;
+
     vector<int> a{1, 2, 3};
     vector<int> b{4, 5, 6};
     using iterType = decltype(a.begin());
@@ -57,10 +61,31 @@ void iterate() {
         cout << *it << " ";
     }
     cout << endl;
+    cout << endl;
+}
+
+void copy() { 
+    cout << "-------- Testing std::copy --------" << endl;
+    vector<int> a{1, 2, 3};
+    vector<int> b{4, 5, 6};
+    vector<int> c{};
+    
+    using iterType = decltype(a.begin());
+    join_iterator<iterType> itBegin{a.begin(), a.end(), b.begin()};
+    join_iterator<iterType> itEnd{b.end()};
+
+    std::copy(itBegin, itEnd, std::back_inserter(c));
+    for(int i : c) {
+        cout << i << " ";
+    }
+    cout << endl;
+
 }
 
 int main() {
    equalsOperators(); 
    incrementOperators();
    iterate();
+   copy();
+
 }
