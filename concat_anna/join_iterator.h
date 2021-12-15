@@ -33,8 +33,19 @@ public:
         return res;
     }
 
-private:
+    // returns true if iterators are pointing to the same element
+    bool operator==(Iterator other)
+    {
+        return *_pos == *other;
+    }
 
+    // returns true if iterators are pointing to different elements
+    bool operator!=(Iterator other)
+    {
+        return !(*_pos == *other);
+    }
+
+private:
     Iterator first;
     Iterator last;
     Iterator _pos;

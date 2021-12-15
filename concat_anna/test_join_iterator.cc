@@ -12,8 +12,10 @@ int main()
     join_iterator<iter_type> it2(a.begin() + 1, a.end());
     auto test = *it;
     ++it;
+    if (it == it2) std::cout << "theyre equal." << std::endl;
     test = *it;
     ++it;
+    if (it != it2) std::cout << "theyre not equal." << std::endl;
     test = *it;
     it++;
     test = *it;
