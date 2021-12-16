@@ -12,12 +12,33 @@
 
 \section{Övergripande design: beskriv klasser och funktioner, och deras relationer till varandra.}
 
+Syftet med programmet är att koppla ihop två olika containers utan att behöva kopiera några element. Programmets design är mycket enkel - det består av två klassmallar och ett testprogram. Klassmallen concatenation, som finns i filen \verb 'concatenation.h' är gränssnittet för programmet. En concatenation har två datamedlemmar av typen T& som är referenser till de två containers som ska slås ihop. 
+
+
+
+
+
+
+
+Mallfunktionerna \verb 'toString' och \verb 'print' skrevs för att tolkning av testresultat inte skulle kräva utskrifter.
+
+
+
+Endast ett testprogram skrevs. Källkoden till detta ses nedan.
+
+
+
+
 \section{En kort användarinstruktion: hur bygger och testar man programmet? Försök att paketera
 så mycket som möjligt med regler i makefilen. Det underlättar både under ert arbete och
 gör att denna instruktion blir väldigt enkel att skriva.}
 
+Packa upp .zip-filen och öppna med favoriteditorn. Skriv in \verb "make test" i terminalen. Då körs programmet \verb 'test_join_iterator'.
+
 \section{Brister och kommentarer: Finns det något i lösning som du i efterhand anser borde gjorts
 annorlunda? Andra kommentarer?}
+
+Vi har valt att inte implementera const-iteratorer på grund av tidsbrist. Strukturen och planeringen av testprogrammet hade kunnat vara mycket bättre. 
 
 \section{Anteckningar}
 
