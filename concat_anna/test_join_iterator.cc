@@ -147,14 +147,29 @@ void testConcatWrite() {
     cout << endl;
 }
 
+void testConcatenate() {
+    cout << "-------- Testing concatenate() --------" << endl;
+
+    vector<std::string> a{"hej", "på", "dig"};
+    vector<std::string> b{"din", "fule", "faan"};
+    auto c = concatenate(a, b);
+    
+    for(auto& i : c) { 
+        cout << i << " ";
+    }
+    cout << endl;
+
+}
+
 int main() {
-   equalsOperators(); 
-   incrementOperators();
-   iterate();
-   copy();
-   testConcatenation();
-   testConcatCopy();
-   testConcatFind();
-   testConcatWrite();
+    equalsOperators(); 
+    incrementOperators();
+    iterate();
+    copy();
+    testConcatenation();
+    testConcatCopy();
+    testConcatFind();
+    testConcatWrite();
+    testConcatenate(); 
 
 }

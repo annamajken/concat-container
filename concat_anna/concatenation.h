@@ -21,3 +21,8 @@ class concatenation{
         T& collection1;
         T& collection2;
 };
+
+template<typename T>
+concatenation<T> concatenate(T& c1, T& c2) {
+    return concatenation<T>{c1, c2}; 
+}
